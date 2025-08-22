@@ -1,0 +1,3 @@
+cdp_policy:
+  adminSt: "enabled"
+  cdpPolicyName: "cdp-enabled"

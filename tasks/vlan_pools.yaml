@@ -1,0 +1,33 @@
+---
+- name: Create VLAN Pools
+  aci_rest:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    use_proxy: no
+    path: /api/mo/.json
+    method: post
+    content:
+      fvnsVlanInstP:
+        attributes:
+          allocMode: "{{ vlan_pools.allocMode }}"
+          annotation: ''
+          descr: "{{ shared_vars.descr }}"
+          dn: uni/infra/vlanns-[{{ vlan_pools.vlanName }}]-static
+          name: "{{ vlan_pools.vlanName }}"
+          nameAlias: ''
+          ownerKey: ''
+          ownerTag: ''
+          status: "{{ 'deleted' if (state | default('present')) == 'absent' else 'created,modified' }}"
+        children:
+          - fvnsEncapBlk:
+              attributes:
+                allocMode: "{{ vlan_pools.allocMode }}"
+                annotation: ''
+                descr: ''
+                from: "{{ vlan_pools.vlanFrom }}"
+                name: ''
+                nameAlias: ''
+                role: external
+                to: "{{ vlan_pools.vlanTo }}"

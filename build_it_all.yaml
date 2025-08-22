@@ -1,0 +1,31 @@
+---
+- name:               Build APIC Configuration from Scratch
+  hosts:              apic1
+  connection:         local
+  gather_facts:       no
+  
+  tasks:
+    - name: VLAN Pools
+      import_tasks: tasks/vlan_pools.yaml
+    - name: CDP Policy
+      import_tasks: tasks/cdp_policy.yaml
+    - name: LLDP Policy
+      import_tasks: tasks/lldp_policy.yaml
+    - name: Link Level Policies
+      import_tasks: tasks/link_level_policies.yaml
+    - name: Physical Domain
+      import_tasks: tasks/phys_dom.yaml
+    - name: Interface Policy Groups
+      import_tasks: tasks/intf_policy_groups.yaml
+    - name: Leaf Profiles
+      import_tasks: tasks/leaf_profiles.yaml
+    - name: Interface Selectors
+      import_tasks: tasks/interface_selectors.yaml
+    - name: Switch Leaf Profiles
+      import_tasks: tasks/switch_leaf_profiles.yaml
+    - name: VRF, BD, EPG, Tenant
+      import_tasks: tasks/vrf_bd_epg.yaml
+    - name: AAEP
+      import_tasks: tasks/aaep.yaml
+    - name: Static Ports
+      import_tasks: tasks/static_ports.yaml

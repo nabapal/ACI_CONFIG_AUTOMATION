@@ -1,0 +1,3 @@
+vrfs:
+  - tenantName: common
+    vrfName: vrf-01

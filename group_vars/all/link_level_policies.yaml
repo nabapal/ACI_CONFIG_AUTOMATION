@@ -1,0 +1,9 @@
+link_level_policies:
+  - name: "link_1G"
+    speed: "1G"
+  - name: "link_10G"
+    speed: "10G"
+  - name: "link_25G"
+    speed: "25G"
+  - name: "link_100G"
+    speed: "100G"

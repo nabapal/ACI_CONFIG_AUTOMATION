@@ -1,0 +1,57 @@
+
+
+- name: Create Attachable Access Entity Profile
+  aci_rest:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    use_proxy: no
+    path: /api/mo/uni/infra.json
+    method: post
+    content:
+      infraInfra:
+        attributes:
+          dn: uni/infra
+          status: created,modified
+        children:
+          - infraAttEntityP:
+              attributes:
+                dn: uni/infra/attentp-all_vlans
+                name: "{{aaep.aaepName}}"
+                descr: "{{shared_vars.descr}}"
+                rn: attentp-{{aaep.aaepName}}
+                status: created,modified
+              children:
+                - infraProvAcc:
+                    attributes:
+                      dn: uni/infra/attentp-{{aaep.aaepName}}/provacc
+                      status: created,modified
+                    children: []
+                - infraRsDomP:
+                    attributes:
+                      tDn: uni/phys-{{phys_dom.physDomName}}
+                      status: created,modified
+                    children: []
+          - infraFuncP:
+              attributes:
+                dn: uni/infra/funcprof
+                status: created,modified
+              children: []
+  when: (state | default('present')) != 'absent'
+
+- name: Delete Attachable Access Entity Profile
+  aci_rest:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    use_proxy: no
+    path: /api/mo/uni/infra.json
+    method: post
+    content:
+      infraAttEntityP:
+        attributes:
+          dn: uni/infra/attentp-all_vlans
+          status: deleted
+  when: (state | default('present')) == 'absent'

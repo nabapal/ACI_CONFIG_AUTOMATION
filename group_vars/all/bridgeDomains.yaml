@@ -1,0 +1,7 @@
+bridgeDomains:
+  - bdName: 192.168.100.0_24
+    tenantName: common
+    vrfName: vrf-01
+  - bdName: 192.168.101.0_24
+    tenantName: common
+    vrfName: vrf-01

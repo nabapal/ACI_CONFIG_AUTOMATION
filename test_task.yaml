@@ -1,0 +1,9 @@
+---
+- name:               Build APIC Configuration from Scratch
+  hosts:              apic1
+  connection:         local
+  gather_facts:       no
+  
+  tasks:
+    - name: VLAN Pools
+      import_tasks: tasks/vlan_pools.yaml

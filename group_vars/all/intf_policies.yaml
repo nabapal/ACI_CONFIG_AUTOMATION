@@ -1,0 +1,17 @@
+intf_policies:
+  - name: "IPG-AP-1G"
+    speed: "1G"
+    cdp: true
+    lldp: true
+  - name: "IPG-AP-10G"
+    speed: "10G"
+    cdp: true
+    lldp: true
+  - name: "IPG-AP-25G"
+    speed: "25G"
+    cdp: true
+    lldp: true
+  - name: "IPG-AP-100G"
+    speed: "100G"
+    cdp: true
+    lldp: true

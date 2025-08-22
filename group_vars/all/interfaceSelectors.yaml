@@ -1,0 +1,7 @@
+interfaceSelectors:
+  - ifPolicyLeafProfileName: Leafs_101_and_102
+    intf_policy: IPG-AP-1G
+    fromCard: '1'
+    fromPort: '1'
+    toCard: '1'
+    toPort: '1'

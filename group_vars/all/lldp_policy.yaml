@@ -1,0 +1,2 @@
+lldp_policy:
+  lldpPolicyName: "lldp-enabled"

@@ -1,0 +1,114 @@
+---
+- name: Create a New VRF
+  aci_vrf:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    vrf: "{{item.vrfName}}"
+    tenant: "{{item.tenantName}}"
+    policy_control_preference: enforced
+    policy_control_direction: ingress
+    state: "{{ state | default('present') }}"
+  with_items:
+    "{{vrfs}}"
+  loop_control:
+    pause: .5
+  ignore_errors: yes
+
+- name: Add Bridge Domain
+  aci_bd:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    tenant: "{{item.tenantName}}"
+    bd: "{{item.bdName}}"
+    vrf: "{{item.vrfName}}"
+    state: "{{ state | default('present') }}"
+  with_items:
+    "{{bridgeDomains}}"
+  loop_control:
+    pause: .5
+  ignore_errors: yes
+
+- name: Create BD Subnet(s)
+  aci_bd_subnet:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    tenant: "{{item.tenantName}}"
+    bd: "{{item.bdName}}"
+    gateway: "{{item.gwAddress}}"
+    mask: "{{item.mask}}"
+    state: "{{ state | default('present') }}"
+  with_items:
+    "{{bdSubnets}}"
+  loop_control:
+    pause: .5
+  ignore_errors: yes
+
+- name: Create New Tenant(s)
+  aci_tenant:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    tenant: "{{item.tenantName}}"
+    state: "{{ state | default('present') }}"
+  with_items:
+    "{{tenants}}"
+  loop_control:
+    pause: .5
+  ignore_errors: yes
+
+- name: Create a New App Profile
+  aci_ap:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    tenant: "{{item.tenantName}}"
+    ap: "{{item.apName}}"
+    state: present
+  with_items:
+    "{{appProfiles}}"
+  loop_control:
+    pause: .5
+  ignore_errors: yes
+
+- name: Create a New EPG
+  aci_epg:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    tenant: "{{item.tenantName}}"
+    ap: "{{item.apName}}"
+    epg: "{{item.epgName}}"
+    bd: "{{item.bdName}}"
+    state: present
+  with_items:
+    "{{epgs}}"
+  loop_control:
+    pause: .5
+  ignore_errors: yes
+
+- name: Add a new physical domain to EPG binding
+  aci_epg_to_domain:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    tenant: "{{item.tenantName}}"
+    ap: "{{item.apName}}"
+    epg: "{{item.epgName}}"
+    domain: "{{phys_dom.physDomName}}"
+    domain_type: phys
+    state: present
+  with_items:
+    "{{epgs}}"
+  loop_control:
+    pause: .5
+  ignore_errors: yes

@@ -1,0 +1,37 @@
+swPolicyLeafProfiles:
+  - swPolicyLeafProfileName: Leaf_101
+    leafName: Leaf-101
+    leafId: '101'
+  - swPolicyLeafProfileName: Leaf_102
+    leafName: Leaf-102
+    leafId: '102'
+  - swPolicyLeafProfileName: Leaf_103
+    leafName: Leaf-103
+    leafId: '103'
+  - swPolicyLeafProfileName: Leaf_104
+    leafName: Leaf-104
+    leafId: '104'
+  - swPolicyLeafProfileName: Leaf_105
+    leafName: Leaf-105
+    leafId: '105'
+  - swPolicyLeafProfileName: Leaf_106
+    leafName: Leaf-106
+    leafId: '106'
+  - swPolicyLeafProfileName: Leafs_101_and_102
+    leafName: Leaf-101
+    leafId: '101'
+  - swPolicyLeafProfileName: Leafs_101_and_102
+    leafName: Leaf-102
+    leafId: '102'
+  - swPolicyLeafProfileName: Leafs_103_and_104
+    leafName: Leaf-103
+    leafId: '103'
+  - swPolicyLeafProfileName: Leafs_103_and_104
+    leafName: Leaf-104
+    leafId: '104'
+  - swPolicyLeafProfileName: Leafs_105_and_106
+    leafName: Leaf-105
+    leafId: '105'
+  - swPolicyLeafProfileName: Leafs_105_and_106
+    leafName: Leaf-106
+    leafId: '106'

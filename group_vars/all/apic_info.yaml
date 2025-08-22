@@ -1,0 +1,4 @@
+apic_info:
+  host: "{{ apic_ip }}"
+  username: "{{ apic_username }}"
+  password: "{{ apic_password }}"

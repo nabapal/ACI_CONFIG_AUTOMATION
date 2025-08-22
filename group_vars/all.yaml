@@ -1,0 +1,7 @@
+# Variables for ACI Build
+aaep:
+tenants:
+epgs:
+## All variables are now split into separate files under group_vars/vars/
+# To use them, Ansible will automatically load all YAML files in group_vars/all and group_vars/vars
+# No content is needed in this file.

@@ -1,0 +1,26 @@
+---
+- name: Create Static Ports
+  aci_rest:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    use_proxy: no
+    path: /api/mo/.json
+    method: post
+    content:
+      fvRsPathAtt:
+        attributes:
+          annotation: ''
+          descr: ''
+          dn: uni/tn-{{item.tenantName}}/ap-{{item.apName}}/epg-{{item.epgName}}/rspathAtt-[topology/pod-1/paths-{{item.nodeID}}/pathep-[{{item.path}}]]
+          encap: vlan-{{item.vlanID}}
+          instrImedcy: immediate
+          mode: regular
+          primaryEncap: unknown
+          tDn: topology/pod-1/paths-{{item.nodeID}}/pathep-[{{item.path}}]
+          status: "{{ 'deleted' if (state | default('present')) == 'absent' else 'created,modified' }}"
+  with_items:
+    "{{staticPorts}}"
+  loop_control:
+    pause: .5

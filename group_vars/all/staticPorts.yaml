@@ -1,0 +1,19 @@
+staticPorts:
+  - nodeID: 101
+    path: eth1/11
+    vlanID: 2011
+    tenantName: Demo
+    apName: WordPress
+    epgName: WebServers
+  - nodeID: 101
+    path: eth1/12
+    vlanID: 2012
+    tenantName: Demo
+    apName: WordPress
+    epgName: WebServers
+  - nodeID: 101
+    path: eth1/13
+    vlanID: 2013
+    tenantName: Demo
+    apName: WordPress
+    epgName: DbServers

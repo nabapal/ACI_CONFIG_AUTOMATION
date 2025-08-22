@@ -1,0 +1,22 @@
+---
+- name: Create CDP Policy
+  aci_rest:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    use_proxy: no
+    path: /api/mo/.json
+    method: post
+    content:
+      cdpIfPol:
+        attributes:
+          adminSt: "{{cdp_policy.adminSt}}"
+          annotation: ''
+          descr: "{{shared_vars.descr}}"
+          dn: uni/infra/cdpIfP-{{cdp_policy.cdpPolicyName}}
+          name: "{{cdp_policy.cdpPolicyName}}"
+          nameAlias: ''
+          ownerKey: ''
+          ownerTag: ''
+          status: "{{ 'deleted' if (state | default('present')) == 'absent' else 'created,modified' }}"

@@ -1,0 +1,9 @@
+bdSubnets:
+  - bdName: 192.168.100.0_24
+    tenantName: common
+    gwAddress: 192.168.100.1
+    mask: 24
+  - bdName: 192.168.101.0_24
+    tenantName: common
+    gwAddress: 192.168.101.1
+    mask: 24

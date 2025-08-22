@@ -1,0 +1,25 @@
+---
+- name: Create Physical Domain
+  aci_rest:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    use_proxy: no
+    path: /api/mo/.json
+    method: post
+    content:
+      physDomP:
+        attributes:
+          annotation: ''
+          dn: uni/phys-{{phys_dom.physDomName}}
+          name: "{{phys_dom.physDomName}}"
+          nameAlias: ''
+          ownerKey: ''
+          ownerTag: ''
+          status: "{{ 'deleted' if (state | default('present')) == 'absent' else 'created,modified' }}"
+        children:
+        - infraRsVlanNs:
+            attributes:
+              annotation: ''
+              tDn: uni/infra/vlanns-[{{vlan_pools.vlanName}}]-static

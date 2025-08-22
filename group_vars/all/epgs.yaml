@@ -1,0 +1,9 @@
+epgs:
+  - epgName: WebServers
+    tenantName: Demo
+    apName: WordPress
+    bdName: 192.168.100.0_24
+  - epgName: DbServers
+    tenantName: Demo
+    apName: WordPress
+    bdName: 192.168.101.0_24
