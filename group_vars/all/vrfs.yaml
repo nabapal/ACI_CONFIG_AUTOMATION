@@ -1,3 +1,21 @@
 vrfs:
-  - tenantName: common
-    vrfName: vrf-01
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-OSS-NOC-MGMT
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-5G-CORE-MGMT
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-5G-CORE-SIGNALLING
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-WLS-CORE-SIGNALLING
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-5G-GLOBAL
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-GNB-SIGNALING
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-GNB-BEARER
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-5G-DATA-SUBSCRIBER
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-5G-VOICE-SUBSCRIBER
+  - tenantName: TELCO-DC-JMNGR-001
+    vrfName: RJIL-IP-MGMT

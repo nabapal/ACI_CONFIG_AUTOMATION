@@ -1,5 +1,5 @@
 vlan_pools:
   allocMode: "static"
-  vlanName: "all_vlans"
-  vlanFrom: "vlan-2000"
-  vlanTo: "vlan-2501"
+  vlanName: "VP-5G-EPC-CORE"
+  vlanFrom: "vlan-3901"
+  vlanTo: "vlan-3927"

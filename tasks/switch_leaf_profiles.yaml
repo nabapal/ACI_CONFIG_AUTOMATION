@@ -23,7 +23,7 @@
         - infraRsAccPortP:
             attributes:
               annotation: ''
-              tDn: uni/infra/accportprof-{{item.swPolicyLeafProfileName}}
+              tDn: uni/infra/accportprof-{{'IPF-' ~ item.swPolicyLeafProfileName}}
         - infraLeafS:
             attributes:
               annotation: ''

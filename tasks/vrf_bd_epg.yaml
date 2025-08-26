@@ -1,4 +1,18 @@
 ---
+- name: Create New Tenant(s)
+  aci_tenant:
+    host: "{{ apic_info.host }}"
+    username: "{{ apic_info.username }}"
+    password: "{{ apic_info.password }}"
+    validate_certs: no
+    tenant: "{{item.tenantName}}"
+    state: "{{ state | default('present') }}"
+  with_items:
+    "{{tenants}}"
+  loop_control:
+    pause: .5
+  ignore_errors: yes
+
 - name: Create a New VRF
   aci_vrf:
     host: "{{ apic_info.host }}"
@@ -45,20 +59,6 @@
     state: "{{ state | default('present') }}"
   with_items:
     "{{bdSubnets}}"
-  loop_control:
-    pause: .5
-  ignore_errors: yes
-
-- name: Create New Tenant(s)
-  aci_tenant:
-    host: "{{ apic_info.host }}"
-    username: "{{ apic_info.username }}"
-    password: "{{ apic_info.password }}"
-    validate_certs: no
-    tenant: "{{item.tenantName}}"
-    state: "{{ state | default('present') }}"
-  with_items:
-    "{{tenants}}"
   loop_control:
     pause: .5
   ignore_errors: yes
