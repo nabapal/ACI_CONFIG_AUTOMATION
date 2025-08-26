@@ -13,8 +13,8 @@
         attributes:
           annotation: ''
           descr: ''
-          dn: uni/infra/accportprof-{{item.ifPolicyLeafProfileName}}/hports-interfaces-typ-range
-          name: interfaces
+          dn: uni/infra/accportprof-{{item.ifPolicyLeafProfileName}}/hports-{{item.interface_name}}-typ-range
+          name: "{{item.interface_name}}"
           nameAlias: ''
           ownerKey: ''
           ownerTag: ''

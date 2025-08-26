@@ -17,7 +17,7 @@
         children:
           - infraAttEntityP:
               attributes:
-                dn: uni/infra/attentp-all_vlans
+                dn: uni/infra/attentp-{{aaep.aaepName}}
                 name: "{{aaep.aaepName}}"
                 descr: "{{shared_vars.descr}}"
                 rn: attentp-{{aaep.aaepName}}
@@ -52,6 +52,6 @@
     content:
       infraAttEntityP:
         attributes:
-          dn: uni/infra/attentp-all_vlans
+          dn: uni/infra/attentp-{{aaep.aaepName}}
           status: deleted
   when: (state | default('present')) == 'absent'

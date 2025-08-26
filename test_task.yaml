@@ -5,5 +5,5 @@
   gather_facts:       no
   
   tasks:
-    - name: VLAN Pools
-      import_tasks: tasks/vlan_pools.yaml
+    - name: Interface Selectors
+      import_tasks: tasks/interface_selectors.yaml
