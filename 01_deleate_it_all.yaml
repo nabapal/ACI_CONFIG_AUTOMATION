@@ -1,0 +1,51 @@
+---
+- name: Delete APIC Configuration
+  hosts: apic1
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Delete VRF, BD, EPG, Tenant
+      import_tasks: tasks/vrf_bd_epg.yaml
+      vars:
+        state: absent
+    - name: Delete Switch Leaf Profiles
+      import_tasks: tasks/switch_leaf_profiles.yaml
+      vars:
+        state: absent
+    - name: Delete Interface Selectors
+      import_tasks: tasks/interface_selectors.yaml
+      vars:
+        state: absent
+    - name: Delete Leaf Profiles
+      import_tasks: tasks/leaf_profiles.yaml
+      vars:
+        state: absent
+    - name: Delete Interface Policy Groups
+      import_tasks: tasks/intf_policy_groups.yaml
+      vars:
+        state: absent
+    - name: Delete Physical Domain
+      import_tasks: tasks/phys_dom.yaml
+      vars:
+        state: absent
+    - name: Delete Link Level Policies
+      import_tasks: tasks/link_level_policies.yaml
+      vars:
+        state: absent
+    - name: Delete LLDP Policy
+      import_tasks: tasks/lldp_policy.yaml
+      vars:
+        state: absent
+    - name: Delete CDP Policy
+      import_tasks: tasks/cdp_policy.yaml
+      vars:
+        state: absent
+    - name: Delete VLAN Pools
+      import_tasks: tasks/vlan_pools.yaml
+      vars:
+        state: absent
+    - name: Delete AAEP
+      import_tasks: tasks/aaep.yaml
+      vars:
+        state: absent

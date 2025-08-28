@@ -5,5 +5,5 @@
   gather_facts:       no
   
   tasks:
-    - name: Interface Selectors
-      import_tasks: tasks/interface_selectors.yaml
+    - name: VRF, BD, EPG, Tenant
+      import_tasks: tasks/vrf_bd_epg.yaml
